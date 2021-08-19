@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ClassesTest.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ClassesTest.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="ClassesTest">
+<Window.Styles>
+    <Style Selector="TextBlock.isMyMessage">
+        <Setter Property="Background" Value="Red"></Setter>
+    </Style>
+</Window.Styles>
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <ListBox  Background="#55B0E0E6" Name="ChatListBox" Width="200" Items="{Binding Messages}">
+    <ListBox.ItemTemplate>
+            <DataTemplate>
+               <StackPanel>
+                   <TextBlock Text="{Binding Name}" Classes.isMyMessage="{Binding Class}"></TextBlock>
+               </StackPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+
+</Window>
